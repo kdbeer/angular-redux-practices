@@ -25,5 +25,36 @@
 <br>
 <h6>Todo List: </h6>
 <div *ngIf="(todos | async )?.length!=0">
-
+  <table class="table">
+    <thead class="thead-inserse">
+      <tr>
+        <th>#</th>
+        <th>Todo Description</th>
+        <th>Responsible</th>
+        <th>Priority</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of todos | async ">
+        <td>
+          <span>{{ t.id }}</span>
+        </td>
+        <td>
+          <span>{{ t.description }}</span>
+        </td>
+        <td>
+          <span>{{ t.responsible }}</span>
+        </td>
+        <td>
+          <span *ngIf=" t.priority == 'low' " (click)="toggleTodo(t)" class="badge badge-success " [class.isCompleted]="t.isCompleted">Low</span>
+          <span *ngIf=" t.priority == 'medium'" (click)="toggleTodo(t)" class="badge badge-warning " [class.isCompleted]="t.isCompleted">Medium</span>
+          <span *ngIf=" t.priority == 'high'" (click)="toggleTodo(t)" class="badge badge-danger " [class.isCompleted]="t.isCompleted">Height</span>
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="removeTodo(t)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
