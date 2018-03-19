@@ -1,0 +1,29 @@
+<br>
+<h6>Created Todo: </h6>
+<form (ngSubmit)="onSubmit()" #todoForm="ngForm">
+  <div class="form-row">
+    <div class="col-auto">
+      <input type="text" class="form-control" placeholder="Description" id="desctiption" [(ngModel)]="model.description" name="description"
+        #description="ngModel">
+    </div>
+    <div class="col-auto">
+      <input type="text" class="form-control" placeholder="Responsible" id="responsible" [(ngModel)]="model.responsible" name="responsible"
+        #description="ngModel">
+    </div>
+    <div class="col-auto">
+      <select class="form-control" name="priority" id="priority" [(ngModel)]="model.priority" #priority="ngModel">
+        <option value="low">low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <button class="btn btn-primary" type="submmit">Create</button>
+    </div>
+  </div>
+</form>
+<br>
+<h6>Todo List: </h6>
+<div *ngIf="(todos | async )?.length!=0">
+
+</div>
